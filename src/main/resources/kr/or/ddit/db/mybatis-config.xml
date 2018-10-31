@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="kr/or/ddit/db/db.properties"/>
+	
+	<typeAliases>
+		<typeAlias type="kr.or.ddit.user.model.UserVO" alias="userVo"/>
+		<typeAlias type="kr.or.ddit.util.model.PageVO" alias="pageVo"/>
+		<typeAlias type="kr.or.ddit.prod.model.ProdAllVo" alias="prodAllVo"/>
+		<typeAlias type="kr.or.ddit.prod.model.ProdDetailVo" alias="prodDetailVo"/>
+	</typeAliases>
+	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${db.driver}" />
+				<property name="url" value="${db.url}" />
+				<property name="username" value="${db.username}" />
+				<property name="password" value="${db.password}" />
+			</dataSource> 
+			<!-- <dataSource type="JNDI">
+				<property name="data_source" value="java:comp/env/jdbc/oracleDB" />
+			</dataSource> -->
+		</environment>
+	</environments>
+	<mappers>
+		<!-- 실제 쿼리문을 작성하는 xml이 발생할 때마다 등록해줘야 한다. 까먹으면 안돼!! -->
+		<mapper resource="kr/or/ddit/db/temp.xml" />
+		<mapper resource="kr/or/ddit/db/user.xml" />
+		<mapper resource="kr/or/ddit/db/prod.xml" />
+		
+	</mappers>
+</configuration>
